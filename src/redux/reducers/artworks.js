@@ -38,8 +38,14 @@ export default (state = initialState, action) => {
     else {
       favorites[action.payload] = action.payload
     }
+    localStorage.setItem("saatchi-favorites", JSON.stringify(favorites))
     return Object.assign({}, state, {
       favorites,
+    })
+  case actions.FETCH_LOCAL:
+    const local = JSON.parse(localStorage.getItem("saatchi-favorites") || {})
+    return Object.assign({}, state, {
+      favorites: local,
     })
   default:
     return state

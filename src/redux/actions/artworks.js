@@ -4,6 +4,7 @@ export const FETCH_SUCCESS = "@artworks.FETCH.SUCCESS"
 export const FETCH_FAILURE = "@artworks.FETCH.FAILURE"
 export const UPDATE_SEARCH = "@artworks.UPDATE_SEARCH"
 export const FAVORITE_TOGGLE = "@artworks.FAVORITE_TOGGLE"
+export const FETCH_LOCAL = "@artworks.FETCH_LOCAL"
 
 export const actions = {
   FETCH_START,
@@ -11,11 +12,13 @@ export const actions = {
   FETCH_FAILURE,
   UPDATE_SEARCH,
   FAVORITE_TOGGLE,
+  FETCH_LOCAL,
 }
 
 // ACTIONS
 export function fetchArtworks(dispatch) {
   dispatch({ type: FETCH_START })
+  dispatch({ type: FETCH_LOCAL })
 
   setTimeout(
     () =>

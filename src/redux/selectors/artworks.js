@@ -6,7 +6,7 @@ export const getSearch = state => state.artworks.search
 export const getIsFetching = state => state.artworks.isFetching
 export const getError = state => state.artworks.error
 
-export const searchArtworks = createSelector(
+export const availableArtworks = createSelector(
   [getArtworks, getSearch],
   (artworks, search) => {
     if (!search.trim().length) {
@@ -21,7 +21,3 @@ export const searchArtworks = createSelector(
     }
   }
 )
-
-export const availableArtworks = createSelector([searchArtworks], artworks => {
-  return artworks
-})

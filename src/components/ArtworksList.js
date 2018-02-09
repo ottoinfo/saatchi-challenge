@@ -12,16 +12,25 @@ const Wrapper = styled.div`
   }
 `
 
-type Props = {
-  products: object,
-}
-
-type State = {}
-
-export default class ArtworksList extends PureComponent<Props, State> {
-  componentWillMount() {}
+export default class ArtworksList extends PureComponent {
+  componentWillMount() {
+    const { artworks, fetchArtworks } = this.props
+    if (!artworks || !artworks.length) {
+      fetchArtworks()
+    }
+  }
 
   render() {
+    const { artworks, isFetching } = this.props
+
+    if (isFetching) {
+      return (
+        <div>
+          <img src="https://loading.io/spinners/zigzag/lg.zigzag-curve-preloader.gif" />
+        </div>
+      )
+    }
+
     return (
       <Wrapper>
         <h1>Original Art for Sale</h1>

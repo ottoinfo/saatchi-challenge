@@ -3,15 +3,21 @@
   Please don't do this!!!
 */
 
-import React, { PureComponent } from 'react';
-import styled from 'styled-components';
-import marked from 'marked';
+import React, { PureComponent } from "react"
+import styled from "styled-components"
+import marked from "marked"
 
-import myMarkdownFile from '../README.md';
+import myMarkdownFile from "../README.md"
 
 const Wrapper = styled.div`
   h1 {
     margin-bottom: 30px;
+  }
+  h3 {
+    margin: 20px 0 10px;
+  }
+  img {
+    max-width: 800px;
   }
   code {
     padding: 10px 20px;
@@ -41,26 +47,26 @@ const Wrapper = styled.div`
       color: ${props => props.theme.colors.blue};
     }
   }
-`;
+`
 
 export default class Instructions extends PureComponent {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       markdown: null,
-    };
+    }
   }
 
   componentWillMount() {
     fetch(myMarkdownFile)
       .then(response => response.text())
-      .then(markdown => this.setState({ markdown }));
+      .then(markdown => this.setState({ markdown }))
   }
 
   render() {
-    const { markdown } = this.state;
+    const { markdown } = this.state
     if (!markdown) {
-      return null;
+      return null
     }
 
     return (
@@ -69,6 +75,6 @@ export default class Instructions extends PureComponent {
           __html: marked(markdown, { sanitize: true }),
         }}
       />
-    );
+    )
   }
 }

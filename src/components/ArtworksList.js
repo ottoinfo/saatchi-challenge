@@ -1,6 +1,8 @@
 import React, { PureComponent } from "react"
 import styled from "styled-components"
 
+import ArtworkItem from "./ArtworkItem"
+
 const Wrapper = styled.div`
   h1 {
     font-size: ${props => props.theme.fontSizes[6]}px;
@@ -12,6 +14,18 @@ const Wrapper = styled.div`
   }
 `
 
+const Loader = styled.div`
+  text-align: center;
+`
+
+const List = styled.div`
+  display: grid;
+  grid-gap: 3%;
+  grid-template-columns: repeat(3, 30%);
+  grid-column-gap: 5%;
+  grid-row-gap: 30px;
+`
+
 export default class ArtworksList extends PureComponent {
   componentWillMount() {
     const { artworks, fetchArtworks } = this.props
@@ -21,13 +35,23 @@ export default class ArtworksList extends PureComponent {
   }
 
   render() {
-    const { artworks, isFetching } = this.props
+    const {
+      artworks,
+      favorites,
+      isFetching,
+      error,
+      favoriteToggle,
+    } = this.props
+
+    if (error) {
+      <p>Error Loading Data...</p>
+    }
 
     if (isFetching) {
       return (
-        <div>
+        <Loader>
           <img src="https://loading.io/spinners/zigzag/lg.zigzag-curve-preloader.gif" />
-        </div>
+        </Loader>
       )
     }
 
@@ -35,7 +59,17 @@ export default class ArtworksList extends PureComponent {
       <Wrapper>
         <h1>Original Art for Sale</h1>
 
-        <p>Load Artwork and display</p>
+        <List>
+          {artworks &&
+            artworks.map(artwork => (
+              <ArtworkItem
+                key={artwork.artId}
+                {...artwork}
+                favorited={favorites[artwork.artId]}
+                favoriteArtwork={favoriteToggle}
+              />
+            ))}
+        </List>
       </Wrapper>
     )
   }

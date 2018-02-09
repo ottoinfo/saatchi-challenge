@@ -1,12 +1,16 @@
 // CONSTANTS
-export const FETCH_START = "@products.FETCH.START"
-export const FETCH_SUCCESS = "@products.FETCH.SUCCESS"
-export const FETCH_FAILURE = "@products.FETCH.FAILURE"
+export const FETCH_START = "@artworks.FETCH.START"
+export const FETCH_SUCCESS = "@artworks.FETCH.SUCCESS"
+export const FETCH_FAILURE = "@artworks.FETCH.FAILURE"
+export const UPDATE_SEARCH = "@artworks.UPDATE_SEARCH"
+export const FAVORITE_TOGGLE = "@artworks.FAVORITE_TOGGLE"
 
 export const actions = {
   FETCH_START,
   FETCH_SUCCESS,
   FETCH_FAILURE,
+  UPDATE_SEARCH,
+  FAVORITE_TOGGLE,
 }
 
 // ACTIONS
@@ -18,7 +22,6 @@ export function fetchArtworks(dispatch) {
       fetch("/api/data.json")
         .then(response => response.json())
         .then(data => {
-          console.log(data)
           return dispatch({
             type: FETCH_SUCCESS,
             payload: data,
@@ -28,6 +31,15 @@ export function fetchArtworks(dispatch) {
           console.log(error)
           return dispatch({ type: FETCH_FAILURE, payload: error })
         }),
-    5000
+    3000
   )
+}
+
+export function updateSearch(search, dispatch) {
+  return dispatch({ type: UPDATE_SEARCH, payload: search })
+}
+
+export function favoriteToggle(id, dispatch) {
+  console.log(id)
+  return dispatch({ type: FAVORITE_TOGGLE, payload: id })
 }

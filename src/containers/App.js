@@ -53,7 +53,7 @@ export default (props = {}) => (
           <View>
             <Switch>
               <Route exact path="/artworks" render={() => <ArtworksList />} />
-              <Route exact path="/info" render={() => <Info />} />
+              <Route exact path="/instructions" render={() => <Info />} />
               <Route
                 exact
                 path="/"

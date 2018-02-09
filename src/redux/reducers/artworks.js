@@ -3,7 +3,7 @@ import * as actions from "../actions/artworks"
 export const initialState = {
   items: [], // Fetch Data
   search: "", // Search Input
-  favorites: [], // ID's of Products
+  favorites: {}, // ID's of Products
   isLoading: false,
   error: null,
 }
@@ -24,6 +24,22 @@ export default (state = initialState, action) => {
     return Object.assign({}, state, {
       isFetching: false,
       error: "Uh oh, something went wrong with the API",
+    })
+  case actions.UPDATE_SEARCH:
+    return Object.assign({}, state, {
+      search: action.payload,
+    })
+  case actions.FAVORITE_TOGGLE:
+    const favorites = { ...state.favorites }
+    console.log("FAVORITE_TOGGLE", action.payload)
+    if (favorites[action.payload]) {
+      delete favorites[action.payload]
+    }
+    else {
+      favorites[action.payload] = action.payload
+    }
+    return Object.assign({}, state, {
+      favorites,
     })
   default:
     return state

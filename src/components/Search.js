@@ -34,16 +34,24 @@ const Mag = styled.img`
   width: 16.4219px;
 `
 
-export default (props = {}) => (
-  <Search>
-    <SVG xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 8">
-      <g fill="none" fillRule="evenodd" stroke="#333" strokeLinecap="square">
-        <path d="M1 0l7.071 7.071M8.5 7.5l7-7" />
-      </g>
-    </SVG>
+export default (props = {}) => {
+  const { search, updateSearch } = props
+  return (
+    <Search>
+      <SVG xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 8">
+        <g fill="none" fillRule="evenodd" stroke="#333" strokeLinecap="square">
+          <path d="M1 0l7.071 7.071M8.5 7.5l7-7" />
+        </g>
+      </SVG>
 
-    <Input type="text" placeholder="Search Products" />
+      <Input
+        type="text"
+        placeholder="Search Artworks"
+        value={search}
+        onChange={ev => updateSearch(ev.target.value)}
+      />
 
-    <Mag src="/img/mag-glass.svg" />
-  </Search>
-)
+      <Mag src="/img/mag-glass.svg" />
+    </Search>
+  )
+}

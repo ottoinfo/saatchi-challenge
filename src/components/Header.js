@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "react-router-dom"
 import styled from "styled-components"
 
-import Search from "./Search"
+import Search from "../containers/Search"
 
 const Header = styled.header`
   background: ${props => props.theme.colors.headerBackground};
@@ -29,6 +29,10 @@ const Links = styled.nav`
     outline: none;
     + a {
       margin-left: 30px;
+      &:before {
+        content: "|";
+        margin-right: 30px;
+      }
     }
 
     &:focused,
@@ -48,8 +52,7 @@ export default () => (
 
     <Links>
       <Link to="/artworks">Artworks</Link>
-      <Link to="/info">Info</Link>
-      <Link to="/unkown/link">404</Link>
+      <Link to="/instructions">Instructions</Link>
     </Links>
 
     <Search />

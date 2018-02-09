@@ -1,30 +1,11 @@
 # Saatchi Art Code Challenge
 
-We just want to get an idea of how you would complete the task provided.
-All setup is done for you trying to cut out any issues of setup.
+In this example, we have an art browse app partially written.
 
-# Install component and Start the App
+You can run the app with `$ yarn && yarn start` and access it via [localhost:3000](http://localhost:3000/) in the browser.
 
-`yarn`
+You will find a [instruction page](http://localhost:3000/instructions) with all the tasks.
 
-`yarn dev`
+We have also added [Chrome Redux Dev Tools](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en) to the project.
 
-# Challenges
-
-## Fetch products and add them into the products store.
-
-API Endpoint => http://localhost:8080/api/data.json
-
-[axios](https://github.com/axios/axios), (isomorphic-fetch)[https://github.com/matthew-andrews/isomorphic-fetch], (superagent)[https://github.com/visionmedia/superagent]
-
-Commit
-
-## Render Artwork Component into the ArtworkList
-
-## Create a new route to Show a Individual Artworks
-
-## Search Artworks in ArtworkList
-
-## Style the Artwork List into a Grid format
-
-## Style the Individual Artwork
+In the end hoping to a App Looking like this...

@@ -34,8 +34,7 @@ const Mag = styled.img`
   width: 16.4219px;
 `
 
-export default (props = {}) => {
-  const { search, updateSearch } = props
+export default props => {
   return (
     <Search>
       <SVG xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 8">
@@ -44,12 +43,7 @@ export default (props = {}) => {
         </g>
       </SVG>
 
-      <Input
-        type="text"
-        placeholder="Search Artworks"
-        value={search}
-        onChange={ev => updateSearch(ev.target.value)}
-      />
+      <Input type="text" placeholder="Search Artworks" />
 
       <Mag src="/img/mag-glass.svg" />
     </Search>

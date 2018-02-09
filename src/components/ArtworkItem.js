@@ -98,9 +98,6 @@ const Column = styled.div`
 
 export default props => {
   const {
-    favorited,
-    favoriteArtwork,
-    artId,
     artwork_title,
     artwork_url,
     profile_url,
@@ -114,11 +111,7 @@ export default props => {
     <Artwork>
       <ImageWrapper>
         <img src={props.image_url} />
-        <Favicon
-          className="fa fa-heart"
-          liked={favorited || false}
-          onClick={() => favoriteArtwork(artId)}
-        />
+        <Favicon className="fa fa-heart" />
       </ImageWrapper>
       <Info>
         <Title>

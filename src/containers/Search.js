@@ -1,13 +1,8 @@
 import { connect } from "react-redux"
 
 import ArtworksList from "../components/Search"
-import { updateSearch } from "../redux/actions/artworks"
 
-const mapStateToProps = state => ({
-  search: state.artworks.search,
-})
-const mapDispatchToProps = dispatch => ({
-  updateSearch: search => updateSearch(search, dispatch),
-})
+const mapStateToProps = state => ({})
+const mapDispatchToProps = dispatch => ({})
 
 export default connect(mapStateToProps, mapDispatchToProps)(ArtworksList)

@@ -14,61 +14,19 @@ const Wrapper = styled.div`
   }
 `
 
-const Loader = styled.div`
-  text-align: center;
-`
-
-const List = styled.div`
-  display: grid;
-  grid-gap: 3%;
-  grid-template-columns: repeat(3, 30%);
-  grid-column-gap: 5%;
-  grid-row-gap: 30px;
-`
+const List = styled.div``
 
 export default class ArtworksList extends PureComponent {
-  componentWillMount() {
-    const { artworks, fetchArtworks } = this.props
-    if (!artworks || !artworks.length) {
-      fetchArtworks()
-    }
-  }
-
   render() {
-    const {
-      artworks,
-      favorites,
-      isFetching,
-      error,
-      favoriteToggle,
-    } = this.props
-
-    if (error) {
-      <p>Error Loading Data...</p>
-    }
-
-    if (isFetching) {
-      return (
-        <Loader>
-          <img src="https://loading.io/spinners/zigzag/lg.zigzag-curve-preloader.gif" />
-        </Loader>
-      )
-    }
-
     return (
       <Wrapper>
         <h1>Original Art for Sale</h1>
 
         <List>
-          {artworks &&
-            artworks.map(artwork => (
-              <ArtworkItem
-                key={artwork.artId}
-                {...artwork}
-                favorited={favorites[artwork.artId]}
-                favoriteArtwork={favoriteToggle}
-              />
-            ))}
+          <p>
+            Load Artworks via AJAX, Pull into Redux Store, and display each
+            artworks data in a 'ArtworkItem'
+          </p>
         </List>
       </Wrapper>
     )

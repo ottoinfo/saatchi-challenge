@@ -24,6 +24,8 @@
 
 4. Add some flexbox styling to display the filtered artworks in a grid 4 across
 
+5. **Bonus**: Add in favoriting Artwork into the store, tie it into local storage to retrieve favorites on refresh of the page
+
 ### For reference here's an example Finished Apps redux state:
 
 ![Fetch Request](https://dl.dropboxusercontent.com/s/a6wlsjojnpzsdl4/ReduxState.gif?dl=0)

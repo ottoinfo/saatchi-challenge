@@ -5,6 +5,10 @@ const Artwork = styled.div`
   background: #fff;
   border: ${props => props.theme.space[2]}px;
   padding: ${props => props.theme.space[3]}px;
+  flex: 1 1 0;
+  margin: 10px;
+  max-width: 100%;
+  box-sizing: border-box;
 
   img {
     width: 100%;
@@ -28,12 +32,13 @@ const Favicon = styled.span`
   justify-content: center;
   color: ${props =>
     props.liked ? props.theme.colors.red : props.theme.colors.secondary};
-
   transition: 0.3s ease-in color;
   cursor: pointer;
+
   &.fa {
     display: flex;
   }
+
   &:hover {
     color: ${props =>
     props.liked ? props.theme.colors.secondary : props.theme.colors.red};
@@ -74,17 +79,6 @@ const SubText = styled.div`
   margin-bottom: ${props => props.theme.space[3]}px;
 `
 
-const Wrapper = styled.div`
-  position: relative;
-
-  img {
-    opacity: 1;
-    transition: opacity linear 0.3s;
-    ${props => props.hover && "opacity: 0.8"};
-    backface-visibility: hidden;
-  }
-`
-
 const Row = styled.div`
   display: flex;
   justify-content: space-between;
@@ -98,20 +92,27 @@ const Column = styled.div`
 
 export default props => {
   const {
+    id,
     artwork_title,
     artwork_url,
-    profile_url,
-    subject,
+    image_url,
     artist,
     dimensions,
     category,
     product,
-  } = props
+    toggleFav,
+    favs,
+  } = props // artwork: {id, art}
+
   return (
     <Artwork>
       <ImageWrapper>
-        <img src={props.image_url} />
-        <Favicon className="fa fa-heart" />
+        <img alt={artwork_title} src={image_url} />
+        <Favicon
+          onClick={toggleFav.bind(null, id)} // Note () => toggleFav(id)
+          liked={favs[id] ? "liked" : null} // favs[id] || Boolean(favs[id])
+          className="fa fa-heart"
+        />
       </ImageWrapper>
       <Info>
         <Title>

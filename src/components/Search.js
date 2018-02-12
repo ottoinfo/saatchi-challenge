@@ -43,7 +43,7 @@ export default props => {
         </g>
       </SVG>
 
-      <Input type="text" placeholder="Search Artworks" />
+      <Input onKeyUp={props.filterSearchItems} type="text" placeholder="Search Artworks" />
 
       <Mag src="/img/mag-glass.svg" />
     </Search>

@@ -13,21 +13,26 @@ const Wrapper = styled.div`
   h1 {
     margin-bottom: 30px;
   }
+
   h3 {
     margin: 20px 0 10px;
   }
+
   img {
     max-width: 800px;
   }
+
   code {
     padding: 10px 20px;
     display: block;
     background-color: white;
     border-radius: 3px;
   }
+
   p {
     color: ${props => props.theme.colors.secondary};
   }
+
   a {
     color: ${props => props.theme.colors.secondary};
     transition: color ease-in 0.2s;

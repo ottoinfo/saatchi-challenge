@@ -29,11 +29,12 @@ const List = styled.div``
 export default class ArtworksList extends PureComponent {
   componentDidMount() {
     // Load the artwork items asynchronously
-    this.props.getItemsOnLoad() // if data is loaded??? load multiple tiems
+    this.props.getItemsOnLoad() // NOTE if data is loaded??? load multiple times
   }
 
   render() {
     // Based on search input, filter out the artwork items by title
+    // NOTE Selectors would of been nice && includes is handy only for singular string
     const filteredItems = this.props.items.filter(item => {
       return item.artwork_title.toLowerCase().includes(this.props.search)
     }) // Selectors would be nice
@@ -44,14 +45,13 @@ export default class ArtworksList extends PureComponent {
       <div className="loader" />
     ) : (
       <Fragment>
+        {/* NOTE  Neat || Interesting - Fragment*/}
         <h1>Original Art for Sale</h1>
-
         {/* If list is empty, render a "No artworks" message */}
         {filteredItems.length ? null : <i>No artworks available</i>}
-
         <List className="art-list">
           {filteredItems.map(item => (
-            <ArtworkItem // key={item.artId} artwork={item} {...this.props}
+            <ArtworkItem // NOTE key={item.artId} artwork={item} {...this.props}
               key={item.artId}
               id={item.artId}
               artwork_title={item.artwork_title}
@@ -69,6 +69,6 @@ export default class ArtworksList extends PureComponent {
       </Fragment>
     )
 
-    return <Wrapper>{artList}</Wrapper>
+    return <Wrapper>{artList}</Wrapper> // NOTE return the items inside Wrapper
   }
 }

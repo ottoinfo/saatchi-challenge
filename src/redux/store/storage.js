@@ -24,3 +24,5 @@ export const saveState = state => {
     console.log(err)
   }
 }
+// NOTE Just wanted to store just favorites, but good idea, except knowing if items are new/products
+// NOTE if( state && localStorage) - WHY TRY and CATCH

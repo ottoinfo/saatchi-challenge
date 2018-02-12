@@ -14,6 +14,7 @@ const Artwork = styled.div`
     width: 100%;
   }
 `
+// NOTE width: 25%; corrects the text issue of long TITLES
 
 const ImageWrapper = styled.div`
   position: relative;

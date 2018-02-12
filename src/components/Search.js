@@ -42,9 +42,14 @@ export default props => {
           <path d="M1 0l7.071 7.071M8.5 7.5l7-7" />
         </g>
       </SVG>
-
-      <Input onKeyUp={props.filterSearchItems} type="text" placeholder="Search Artworks" />
-
+      <Input
+        onKeyUp={props.filterSearchItems}
+        type="text"
+        placeholder="Search Artworks"
+      />{" "}
+      {/* NOTE onChange={(ev) => filterSearchItems(ev.target.value)} value={props.search}
+          NOTE on REFRESH of page don't know im filtered of SEARCH
+      */}
       <Mag src="/img/mag-glass.svg" />
     </Search>
   )

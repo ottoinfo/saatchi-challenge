@@ -5,14 +5,18 @@ export const fetchItems = () => {
     // Kick off the loading cycle
     dispatch(fetchStart())
 
-    fetch('../../../api/data.json').then(resp => {
-      return resp.json().then(resp => {
-        // Dispatch success when api call is done
-        dispatch(fetchSuccess(resp))
+    fetch("../../../api/data.json")
+      .then(resp => {
+        // NOTE no API call???
+        return resp.json().then(resp => {
+          // Dispatch success when api call is done
+          dispatch(fetchSuccess(resp))
+        })
       })
-    }).catch(err => {
-      console.log(err)
-    })
+      .catch(err => {
+        console.log(err)
+        // NOTE Dispatch Error
+      })
   }
 }
 
@@ -30,7 +34,7 @@ export const fetchSuccess = items => {
 }
 
 export const searchItems = input => {
-  const searchVal = input.target.value.toLowerCase()
+  const searchVal = input.target.value.toLowerCase() // NOTE Should just take text
 
   return {
     type: actionTypes.UPDATE_SEARCH,

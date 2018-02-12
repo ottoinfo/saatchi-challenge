@@ -48,3 +48,4 @@ export default (state = initialState, action) => {
       return state
   }
 }
+// NOTE Error Handling, why remove initialState { rror: null,}
